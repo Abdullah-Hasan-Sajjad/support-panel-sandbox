@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 
 // admin routes
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('admin');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
