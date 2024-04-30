@@ -1,6 +1,9 @@
 
 import { Link } from '@inertiajs/react';
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { CgMenuLeft } from "react-icons/cg";
+import { LuMoveRight } from "react-icons/lu";
 import man from "../../../public/man.jpg";
 import { useState } from 'react';
 
@@ -8,7 +11,7 @@ function Header(props) {
     const [toggle, setToggle] = useState(false)
     const menuToggle = () => {
         setToggle(!toggle)
-        props.handleToggleValue(toggle)
+        props.handleToggleValue(!toggle)
     }
     const [userDetails, setUserDetails] = useState(false)
     const userInfo = () => {
@@ -27,7 +30,11 @@ function Header(props) {
     <span className="sr-only">Menu Toggle Button</span>
     <span className="flex items-center justify-center h-6 w-6">
         {/* <i className="ph ph-list text-2xl"></i> */}
-        <HiMiniBars3BottomLeft className='text-2xl' />
+        {
+            toggle==false? <CgMenuLeft className='
+            text-[#878A99] text-2xl' />
+            : <LuMoveRight className='text-[#878A99] text-2xl' />
+        }
     </span>
 </button>
 </div>
