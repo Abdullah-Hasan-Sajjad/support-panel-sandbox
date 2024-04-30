@@ -6,6 +6,7 @@ import { CgMenuLeft } from "react-icons/cg";
 import { LuMoveRight } from "react-icons/lu";
 import man from "../../../public/man.jpg";
 import { useState } from 'react';
+import { router } from '@inertiajs/react' 
 
 function Header(props) {
     const [toggle, setToggle] = useState(false)
@@ -17,6 +18,20 @@ function Header(props) {
     const userInfo = () => {
         setUserDetails(!userDetails)
     }
+
+
+    const handlePostRequest = () => {
+         
+    
+        // Send a POST request using Inertia.js
+        Inertia.post(route('your.post.route'), postData);
+      };
+
+      function handleSubmit() {
+        console.log("coming here");
+        router.post('/logout');
+    }
+
   return (
     <>
     
@@ -104,8 +119,11 @@ function Header(props) {
         <a className="flex items-center py-2 px-3 rounded-md text-sm text-gray-100 hover:bg-gray-800" href="#">
             Lock Account
         </a> */}
-        <Link className="flex items-center py-2 px-3 rounded-md text-sm text-gray-100 hover:bg-gray-800" href="#">
-            Log Out
+        <Link className="flex items-center py-2 px-3 rounded-md text-sm text-gray-100 hover:bg-gray-800" 
+        onClick={() => {
+            handleSubmit(); 
+          }}>
+            Log Out 
         </Link>
     </div>
 </div>
