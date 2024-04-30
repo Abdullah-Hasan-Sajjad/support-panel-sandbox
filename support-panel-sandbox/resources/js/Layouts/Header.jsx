@@ -120,9 +120,7 @@ function Header(props) {
             Lock Account
         </a> */}
         <Link className="flex items-center py-2 px-3 rounded-md text-sm text-gray-100 hover:bg-gray-800" 
-        onClick={() => {
-            handleSubmit(); 
-          }}>
+        method="post" href={route('logout')} as="button">
             Log Out 
         </Link>
     </div>
