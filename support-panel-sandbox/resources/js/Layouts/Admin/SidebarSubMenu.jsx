@@ -15,7 +15,7 @@ function SidebarSubMenu({ toggleValue }) {
 
   return (
 
-    <div className={!toggleValue ? 'bg-white w-[220px] min-h-screen block shadow-[rgba(15,_34,_58,_0.22)_0px_2px_2px] border-r' : 'bg-white w-[220px] min-h-screen hidden transition ease-in-out delay-1000 translate-x-0.5'}>
+    <div className={!toggleValue ? 'bg-white absolute w-[220px] min-h-screen left-[-220px] duration-700 shadow-[rgba(15,_34,_58,_0.22)_0px_2px_2px] border-r' : 'bg-white absolute w-[220px] min-h-screen left-[70px]  duration-700'}>
 
       <div className="px-5 flex flex-col justify-center items-center min-h-[70px] sticky top-0">
         <span className="">
