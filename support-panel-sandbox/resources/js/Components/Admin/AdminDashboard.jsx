@@ -4,7 +4,7 @@ import { BiSolidUpArrow } from "react-icons/bi";
 import Chart from 'react-apexcharts';
 
 
-export default function ClientDashboard() {
+export default function ClientDashboard({dummyData}) {
   // const [chartOptions, setChartOptions] = useState(
   //   {
   //     options: {
@@ -48,7 +48,7 @@ export default function ClientDashboard() {
   //   }
   // )
   return (
-    <> 
+    <>
     <div className='bg-[#F3F3F9] '>
         <div className='px-6 py-2 border-t border-b-[#e9ebec] bg-white'>
           <h4 className='text-[15px] font-bold uppercase '>Dashboard</h4>
@@ -64,7 +64,7 @@ export default function ClientDashboard() {
             <h3 className='text-3xl font-semibold text-gray-600'>197</h3>
           </div>
         </div>
-        
+
         <div className='col-span-1 border border-[#e9ebec] py-6 px-4 bg-white'>
           <div className='flex justify-between items-center'>
             <span className='text-gray-500 uppercase font-semibold text-[0.8125rem]'>Campaign Sent</span>
@@ -75,7 +75,7 @@ export default function ClientDashboard() {
             <h3 className='text-3xl font-semibold text-gray-600'>197</h3>
           </div>
         </div>
-        
+
         <div className='col-span-1 border border-[#e9ebec] py-6 px-4 bg-white'>
           <div className='flex justify-between items-center'>
             <span className='text-gray-500 uppercase font-semibold text-[0.8125rem]'>Campaign Sent</span>
@@ -86,7 +86,7 @@ export default function ClientDashboard() {
             <h3 className='text-3xl font-semibold text-gray-600'>197</h3>
           </div>
         </div>
-        
+
         <div className='col-span-1 border border-[#e9ebec] py-6 px-4 bg-white'>
           <div className='flex justify-between items-center'>
             <span className='text-gray-500 uppercase font-semibold text-[0.8125rem]'>Campaign Sent</span>
@@ -97,7 +97,7 @@ export default function ClientDashboard() {
             <h3 className='text-3xl font-semibold text-gray-600'>197</h3>
           </div>
         </div>
-        
+
         <div className='col-span-1 border border-[#e9ebec] py-6 px-4 bg-white'>
           <div className='flex justify-between items-center'>
             <span className='text-gray-500 uppercase font-semibold text-[0.8125rem]'>Campaign Sent</span>
@@ -146,10 +146,9 @@ export default function ClientDashboard() {
       </div> */}
       </div>
       <div className='bg-[#F6F8FA] px-6 mt-6 grid grid-cols-5 gap-6'>
-          <div
-              className="col-span-3 border border-gray-300 block rounded-md bg-white shadow-secondary-1 dark:bg-surface-dark dark:text-white text-surface ">
+          <div className="col-span-3 border border-gray-300 block rounded-md bg-white shadow-secondary-1 dark:bg-surface-dark dark:text-white text-surface ">
               <div
-                  className="border-b-2 border-neutral-100 px-6 py-3 dark:border-white/10 font-bold text-[16px]">
+                  className="border-b-2 border-neutral-100 px-6 py-3 dark:border-white/10 font-bold text-black text-[16px]">
                   Deals Status
               </div>
               <div class="card bg-white overflow-hidden">
@@ -163,20 +162,30 @@ export default function ClientDashboard() {
                                               <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">Name</th>
                                               <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">Last Contacted</th>
                                               <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">Sales Representative</th>
-                                              <th scope="col" class="px-6 py-3 text-end text-sm text-gray-500">Status</th>
-                                              <th scope="col" class="px-6 py-3 text-end text-sm text-gray-500">Deal Value</th>
+                                              <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">Status</th>
+                                              <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">Deal Value</th>
                                           </tr>
                                       </thead>
                                       <tbody class="divide-y divide-gray-200">
-                                          <tr>
-                                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Lindsay Walton</td>
-                                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Sep 20, 2021</td>
-                                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Donald Risher</td> 
-                                              <td class="px-6 py-4 whitespace-nowrap text-sm ">
-                                                <button className='bg-green-400/30 px-2 py-1 rounded-sm text-green-600'>Deal Won</button>
-                                              </td> 
-                                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">$100.1K</td> 
-                                          </tr>
+                                          {
+                                              dummyData.data.map((dummyData, index) => {
+                                                  return (
+                                                      <tr key={index}>
+                                                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{dummyData.name}
+                                                          </td>
+                                                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{dummyData.last_contacted}
+                                                          </td>
+                                                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{dummyData.sales_representative}
+                                                          </td>
+                                                          <td className="px-6 py-4 whitespace-nowrap text-sm ">
+                                                              <div className='bg-green-400/30 px-2 py-1 rounded-sm text-green-600'>{dummyData.status}</div>
+                                                          </td>
+                                                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">${dummyData.deal_value}K</td>
+                                                      </tr>
+                                                  );
+                                              })
+                                          }
+
                                       </tbody>
                                   </table>
                               </div>
